@@ -24,7 +24,13 @@ class Book(models.Model):
 
     def get_absolute_url(self):
         return '/org/' + self.str_id
-
+    
+    """The required method to filter books on the basis of authors"""
+    
+    def get_book_by_author(self):
+        queryset = Book.objects.filter(name_author=author).values(‘str_book’)
+        return queryset
+    
     class Meta:
         verbose_name = "Book"
         verbose_name_plural = "Books"
