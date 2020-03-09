@@ -40,6 +40,7 @@ class User(models.Model):
     canonical_name = models.CharField(max_length=50, blank=True)
     roll_number = models.CharField(max_length = 10)
     phone_number = models.CharField(max_length = 10)
+    email = models.EmailField()
 
 
     def save(self, *args, **kwargs):
