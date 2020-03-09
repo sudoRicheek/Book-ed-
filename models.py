@@ -4,8 +4,7 @@ from django.db import models
 from helpers.misc import get_url_friendly
 
 class Book(models.Model):
-    """An organization or club which may conduct events."""
-
+    
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     str_id = models.CharField(max_length=50, editable=False, null=True)
     str_book = models.CharField(max_length=50, editable=False, null=True)
@@ -32,8 +31,7 @@ class Book(models.Model):
         ordering = ("name",)
 
 class User(models.Model):
-    """An organization or club which may conduct events."""
-
+    
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     str_id = models.CharField(max_length=50, editable=False, null=True)
     str_username = models.CharField(max_length=50, editable=False, null=True)
@@ -61,7 +59,7 @@ class User(models.Model):
 
 
 class BookUserRelation(models.Model):
-    """Relates a body to one child."""
+    """Foreign Key Many to One Relationship."""
 
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     parent = models.ForeignKey(User, on_delete=models.CASCADE, default=uuid4, related_name='children')
